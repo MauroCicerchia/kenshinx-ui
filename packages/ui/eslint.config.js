@@ -28,6 +28,7 @@ export default [
         HTMLParagraphElement: "readonly",
         HTMLHeadingElement: "readonly",
         HTMLLabelElement: "readonly",
+        HTMLTextAreaElement: "readonly",
       },
     },
     plugins: {

@@ -106,6 +106,188 @@ Deliverable: `@kenshinx/ui` can render a small UI in a consumer app.
 ---
 
 
+## Phase 4A — Form Controls Expansion ✅ COMPLETED
+Priority components to complete form functionality.
+
+### 4A.1 — Select ✅
+1. ~~Use shadcn MCP server to fetch Select component source.~~
+2. ~~Adapt to library conventions:~~
+   - ~~Ensure tokens are used (no hardcoded theme values)~~
+   - ~~Export from `src/index.ts`~~
+3. ~~Add Radix UI Select as dependency if not present.~~
+4. ~~Add story with variants: default, disabled, with placeholder, with groups.~~
+5. ~~Add component demo to playground app.~~
+
+### 4A.2 — Checkbox ✅
+1. ~~Use shadcn MCP server to fetch Checkbox component source.~~
+2. ~~Adapt to library conventions:~~
+   - ~~Ensure tokens are used~~
+   - ~~Export from `src/index.ts`~~
+3. ~~Add Radix UI Checkbox as dependency if not present.~~
+4. ~~Add story with variants: default, checked, disabled, indeterminate.~~
+5. ~~Add component demo to playground app.~~
+
+### 4A.3 — Textarea ✅
+1. ~~Use shadcn MCP server to fetch Textarea component source.~~
+2. ~~Adapt to library conventions:~~
+   - ~~Ensure tokens are used~~
+   - ~~Export from `src/index.ts`~~
+3. ~~Add story with variants: default, disabled, with placeholder, with rows.~~
+4. ~~Add component demo to playground app.~~
+
+
+Deliverable: Complete form control set for typical form UIs.
+
+
+---
+
+
+## Phase 4B — Feedback & Notification Components
+Components for user feedback and status communication.
+
+### 4B.1 — Toast (Sonner)
+1. Use shadcn MCP server to fetch Sonner/Toast component source.
+2. Add `sonner` as dependency.
+3. Adapt to library conventions:
+   - Ensure tokens are used for toast styling
+   - Export Toaster and toast utilities from `src/index.ts`
+4. Add story demonstrating: success, error, warning, info, with action, with description.
+5. Add component demo to playground app.
+
+### 4B.2 — Alert
+1. Use shadcn MCP server to fetch Alert component source.
+2. Adapt to library conventions:
+   - Ensure tokens are used
+   - Export from `src/index.ts`
+3. Add story with variants: default, destructive, with icon, with title and description.
+4. Add component demo to playground app.
+
+### 4B.3 — Badge
+1. Use shadcn MCP server to fetch Badge component source.
+2. Adapt to library conventions:
+   - Ensure tokens are used
+   - Export from `src/index.ts`
+3. Add story with variants: default, secondary, destructive, outline.
+4. Add component demo to playground app.
+
+
+Deliverable: Comprehensive feedback system for user notifications and status indicators.
+
+
+---
+
+
+## Phase 4C — Navigation & Overlay Components
+Components for navigation patterns and contextual overlays.
+
+### 4C.1 — Dropdown Menu
+1. Use shadcn MCP server to fetch Dropdown Menu component source.
+2. Add Radix UI Dropdown Menu as dependency if not present.
+3. Adapt to library conventions:
+   - Ensure tokens are used
+   - Export all subcomponents from `src/index.ts`
+4. Add story with: basic menu, with icons, with shortcuts, with submenus, with checkboxes/radios.
+5. Add component demo to playground app.
+
+### 4C.2 — Tabs
+1. Use shadcn MCP server to fetch Tabs component source.
+2. Add Radix UI Tabs as dependency if not present.
+3. Adapt to library conventions:
+   - Ensure tokens are used
+   - Export from `src/index.ts`
+4. Add story with variants: default, with icons, vertical orientation.
+5. Add component demo to playground app.
+
+### 4C.3 — Tooltip
+1. Use shadcn MCP server to fetch Tooltip component source.
+2. Add Radix UI Tooltip as dependency if not present.
+3. Adapt to library conventions:
+   - Ensure tokens are used
+   - Export from `src/index.ts`
+4. Add story with: basic tooltip, different positions, with delay.
+5. Add component demo to playground app.
+
+### 4C.4 — Popover
+1. Use shadcn MCP server to fetch Popover component source.
+2. Add Radix UI Popover as dependency if not present.
+3. Adapt to library conventions:
+   - Ensure tokens are used
+   - Export from `src/index.ts`
+4. Add story with: basic popover, with form content, different alignments.
+5. Add component demo to playground app.
+
+### 4C.5 — Sheet
+1. Use shadcn MCP server to fetch Sheet component source.
+2. Add Radix UI Dialog as dependency if not present (Sheet uses Dialog primitive).
+3. Adapt to library conventions:
+   - Ensure tokens are used
+   - Export from `src/index.ts`
+4. Add story with: left/right/top/bottom positions, with form content.
+5. Add component demo to playground app.
+
+
+Deliverable: Full navigation and overlay toolkit for menus, panels, and contextual content.
+
+
+---
+
+
+## Phase 4D — Data Display & Loading Components
+Components for displaying data and loading states.
+
+### 4D.1 — Avatar
+1. Use shadcn MCP server to fetch Avatar component source.
+2. Add Radix UI Avatar as dependency if not present.
+3. Adapt to library conventions:
+   - Ensure tokens are used
+   - Export from `src/index.ts`
+4. Add story with: with image, with fallback initials, different sizes.
+5. Add component demo to playground app.
+
+### 4D.2 — Skeleton
+1. Use shadcn MCP server to fetch Skeleton component source.
+2. Adapt to library conventions:
+   - Ensure tokens are used
+   - Export from `src/index.ts`
+3. Add story with: basic skeleton, card skeleton, list skeleton patterns.
+4. Add component demo to playground app.
+
+### 4D.3 — Table
+1. Use shadcn MCP server to fetch Table component source.
+2. Adapt to library conventions:
+   - Ensure tokens are used
+   - Export all subcomponents from `src/index.ts`
+3. Add story with: basic table, with sorting indication, with selection, responsive patterns.
+4. Add component demo to playground app.
+
+
+Deliverable: Essential components for data-heavy interfaces and loading states.
+
+
+---
+
+
+## Phase 4E — Form Integration
+React Hook Form integration for comprehensive form handling.
+
+### 4E.1 — Form
+1. Use shadcn MCP server to fetch Form component source.
+2. Add `react-hook-form` and `@hookform/resolvers` as peer dependencies.
+3. Add `zod` as optional peer dependency for validation.
+4. Adapt to library conventions:
+   - Ensure tokens are used
+   - Export Form, FormField, FormItem, FormLabel, FormControl, FormDescription, FormMessage from `src/index.ts`
+5. Add story with: complete form example, validation states, error messages.
+6. Add documentation for Form usage with react-hook-form.
+7. Add component demo to playground app.
+
+
+Deliverable: Full form handling integration with validation support.
+
+
+---
+
+
 ## Phase 5 — Playground consumer app (Vite)
 1. Create `apps/playground` (Vite React TS).
 2. Configure Tailwind in playground:
