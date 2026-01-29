@@ -9,7 +9,7 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "bun run --filter '@kenshinx/ui/*' build",
+    "build": "bun run --filter '@kenshinx/ui' build && bun run --filter '@kenshinx/playground' --filter '@kenshinx/storybook' build",
     "lint": "bun run --filter '*' lint",
     "test": "bun run --filter '*' test",
     "dev": "bun run --filter '*' dev",
