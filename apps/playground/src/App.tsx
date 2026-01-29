@@ -18,6 +18,15 @@ import {
   DialogFooter,
   DialogClose,
   Switch,
+  Checkbox,
+  Textarea,
+  Select,
+  SelectContent,
+  SelectGroup,
+  SelectItem,
+  SelectLabel,
+  SelectTrigger,
+  SelectValue,
 } from "@kenshinx/ui";
 
 function App() {
@@ -161,6 +170,133 @@ function App() {
             <div className="flex items-center space-x-2">
               <Switch id="disabled-switch" disabled />
               <Label htmlFor="disabled-switch">Disabled Switch</Label>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Checkbox Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Checkbox Component</CardTitle>
+            <CardDescription>
+              Checkbox for toggling options, built on Radix UI.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="flex items-center space-x-2">
+              <Checkbox id="terms" />
+              <Label htmlFor="terms">Accept terms and conditions</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Checkbox id="marketing" defaultChecked />
+              <Label htmlFor="marketing">Receive marketing emails</Label>
+            </div>
+            <div className="flex items-center space-x-2">
+              <Checkbox id="disabled-checkbox" disabled />
+              <Label htmlFor="disabled-checkbox">Disabled checkbox</Label>
+            </div>
+            <div className="items-top flex space-x-2">
+              <Checkbox id="terms2" />
+              <div className="grid gap-1.5 leading-none">
+                <Label htmlFor="terms2">Accept terms and conditions</Label>
+                <p className="text-sm text-muted-foreground">
+                  You agree to our Terms of Service and Privacy Policy.
+                </p>
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Textarea Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Textarea Component</CardTitle>
+            <CardDescription>
+              Multi-line text input for longer content.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="grid w-full gap-1.5">
+              <Label htmlFor="message">Your message</Label>
+              <Textarea placeholder="Type your message here..." id="message" />
+            </div>
+            <div className="grid w-full gap-1.5">
+              <Label htmlFor="bio">Bio</Label>
+              <Textarea
+                placeholder="Tell us about yourself"
+                id="bio"
+                rows={4}
+              />
+              <p className="text-sm text-muted-foreground">
+                Your bio will be displayed on your profile.
+              </p>
+            </div>
+            <div className="grid w-full gap-1.5">
+              <Label htmlFor="disabled-textarea">Disabled</Label>
+              <Textarea
+                id="disabled-textarea"
+                disabled
+                placeholder="This textarea is disabled"
+              />
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Select Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Select Component</CardTitle>
+            <CardDescription>
+              Dropdown select menu built on Radix UI.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="grid w-full max-w-sm gap-1.5">
+              <Label htmlFor="fruit">Favorite Fruit</Label>
+              <Select>
+                <SelectTrigger id="fruit">
+                  <SelectValue placeholder="Select a fruit" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="apple">Apple</SelectItem>
+                  <SelectItem value="banana">Banana</SelectItem>
+                  <SelectItem value="orange">Orange</SelectItem>
+                  <SelectItem value="grape">Grape</SelectItem>
+                  <SelectItem value="mango">Mango</SelectItem>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid w-full max-w-sm gap-1.5">
+              <Label htmlFor="timezone">Timezone</Label>
+              <Select>
+                <SelectTrigger id="timezone">
+                  <SelectValue placeholder="Select a timezone" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectGroup>
+                    <SelectLabel>North America</SelectLabel>
+                    <SelectItem value="est">Eastern (EST)</SelectItem>
+                    <SelectItem value="cst">Central (CST)</SelectItem>
+                    <SelectItem value="pst">Pacific (PST)</SelectItem>
+                  </SelectGroup>
+                  <SelectGroup>
+                    <SelectLabel>Europe</SelectLabel>
+                    <SelectItem value="gmt">GMT</SelectItem>
+                    <SelectItem value="cet">Central European (CET)</SelectItem>
+                  </SelectGroup>
+                </SelectContent>
+              </Select>
+            </div>
+            <div className="grid w-full max-w-sm gap-1.5">
+              <Label htmlFor="disabled-select">Disabled Select</Label>
+              <Select disabled>
+                <SelectTrigger id="disabled-select">
+                  <SelectValue placeholder="Can't select" />
+                </SelectTrigger>
+                <SelectContent>
+                  <SelectItem value="option">Option</SelectItem>
+                </SelectContent>
+              </Select>
             </div>
           </CardContent>
         </Card>

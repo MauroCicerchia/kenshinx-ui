@@ -36,3 +36,21 @@ export {
 } from "./components/dialog";
 
 export { Switch } from "./components/switch";
+
+export { Checkbox } from "./components/checkbox";
+
+export { Textarea } from "./components/textarea";
+export type { TextareaProps } from "./components/textarea";
+
+export {
+  Select,
+  SelectGroup,
+  SelectValue,
+  SelectTrigger,
+  SelectContent,
+  SelectLabel,
+  SelectItem,
+  SelectSeparator,
+  SelectScrollUpButton,
+  SelectScrollDownButton,
+} from "./components/select";

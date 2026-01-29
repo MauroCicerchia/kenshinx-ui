@@ -13,6 +13,8 @@
     "lint": "bun run --filter '*' lint",
     "test": "bun run --filter '*' test",
     "dev": "bun run --filter '*' dev",
+    "dev:playground": "bun run --filter '@kenshinx/playground' dev",
+    "dev:storybook": "bun run --filter '@kenshinx/storybook' dev",
     "prepare": "husky",
     "release": "bunx semantic-release",
     "release:dry-run": "bunx semantic-release --dry-run"
