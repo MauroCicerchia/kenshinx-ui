@@ -8,6 +8,6 @@ export default defineConfig({
   format: ["esm"],
   dts: true,
   clean: true,
-  external: ["react", "react-dom", "tailwindcss"],
+  external: ["react", "react-dom", "tailwindcss", "recharts"],
   treeshake: true,
 });

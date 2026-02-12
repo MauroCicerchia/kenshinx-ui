@@ -170,3 +170,13 @@ export {
   type ComboboxProps,
   type ComboboxOption,
 } from "./components/combobox";
+
+export {
+  ChartContainer,
+  ChartTooltip,
+  ChartTooltipContent,
+  ChartLegend,
+  ChartLegendContent,
+  ChartStyle,
+  type ChartConfig,
+} from "./components/chart";
