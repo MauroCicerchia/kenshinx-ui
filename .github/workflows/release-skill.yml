@@ -1,0 +1,62 @@
+# Skill Release workflow - Validate, package, and publish kenshinx-ui.skill
+name: Release Skill
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - ".agents/skills/kenshinx-ui/**"
+
+permissions:
+  contents: write
+
+jobs:
+  release-skill:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Install Python dependencies
+        run: pip install pyyaml
+
+      - name: Validate skill
+        run: |
+          python3 .agent/skills/skill-creator/scripts/quick_validate.py .agents/skills/kenshinx-ui
+          echo "Skill validation passed!"
+
+      - name: Package skill
+        run: |
+          python3 .agent/skills/skill-creator/scripts/package_skill.py .agents/skills/kenshinx-ui ./dist
+          echo "Skill packaged to ./dist/kenshinx-ui.skill"
+
+      - name: Get skill version
+        id: version
+        run: |
+          # Derive version from the git tag or use the commit SHA as fallback
+          VERSION=$(git describe --tags --abbrev=0 2>/dev/null || echo "v0.0.0-$(git rev-parse --short HEAD)")
+          echo "version=${VERSION}" >> $GITHUB_OUTPUT
+          echo "Skill version: ${VERSION}"
+
+      - name: Create or update GitHub Release for skill
+        uses: softprops/action-gh-release@v2
+        with:
+          tag_name: "skill-${{ steps.version.outputs.version }}"
+          name: "kenshinx-ui Skill ${{ steps.version.outputs.version }}"
+          body: |
+            ## Install
+
+            ```bash
+            npx skills add https://github.com/${{ github.repository }}/releases/download/skill-${{ steps.version.outputs.version }}/kenshinx-ui.skill
+            ```
+
+            > This skill provides AI agents with knowledge about the `@kenshinx/ui` component library, enabling them to build and style UIs using the library in other projects.
+          files: dist/kenshinx-ui.skill
+          token: ${{ secrets.GITHUB_TOKEN }}
