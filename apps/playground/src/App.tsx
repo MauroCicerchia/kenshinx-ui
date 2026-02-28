@@ -107,6 +107,11 @@ import {
   ChartLegendContent,
   type ChartConfig,
   ProgressBar,
+  EmptyState,
+  EmptyStateIcon,
+  EmptyStateTitle,
+  EmptyStateDescription,
+  EmptyStateAction,
 } from "@kenshinx/ui";
 import {
   AlertCircle,
@@ -124,6 +129,8 @@ import {
   Calculator,
   Smile,
   Calendar as CalendarIcon,
+  Inbox,
+  FileText,
 } from "lucide-react";
 import {
   Bar,
@@ -1472,6 +1479,46 @@ function App() {
             <div className="space-y-3">
               <h4 className="text-sm font-medium text-foreground">With Label</h4>
               <ProgressBar value={75} label="75% Complete" variant="success" />
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* EmptyState Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>EmptyState Component</CardTitle>
+            <CardDescription>
+              A composable placeholder for empty lists, search results, or initial states.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="space-y-3">
+              <h4 className="text-sm font-medium text-foreground">Default</h4>
+              <EmptyState className="rounded-lg border bg-background">
+                <EmptyStateIcon>
+                  <Inbox />
+                </EmptyStateIcon>
+                <EmptyStateTitle>No messages</EmptyStateTitle>
+                <EmptyStateDescription>
+                  You don't have any messages in your inbox. Check back later.
+                </EmptyStateDescription>
+              </EmptyState>
+            </div>
+
+            <div className="space-y-3">
+              <h4 className="text-sm font-medium text-foreground">With Action</h4>
+              <EmptyState className="rounded-lg border bg-background" size="sm">
+                <EmptyStateIcon>
+                  <FileText />
+                </EmptyStateIcon>
+                <EmptyStateTitle>No documents created</EmptyStateTitle>
+                <EmptyStateDescription>
+                  You haven't written anything down yet. Create your first document.
+                </EmptyStateDescription>
+                <EmptyStateAction>
+                  <Button size="sm">Create Document</Button>
+                </EmptyStateAction>
+              </EmptyState>
             </div>
           </CardContent>
         </Card>
