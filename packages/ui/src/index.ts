@@ -200,3 +200,12 @@ export type { EmptyStateProps } from "./components/empty-state";
 
 export { Streak, streakVariants } from "./components/streak";
 export type { StreakProps } from "./components/streak";
+
+export {
+  BottomNav,
+  BottomNavItem,
+  BottomNavIcon,
+  BottomNavLabel,
+  bottomNavItemVariants,
+} from "./components/bottom-nav";
+export type { BottomNavItemProps } from "./components/bottom-nav";
