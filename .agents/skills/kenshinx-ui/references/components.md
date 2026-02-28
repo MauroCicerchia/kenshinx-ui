@@ -30,6 +30,7 @@ function MyComponent() {
 - `Button` (`buttonVariants`)
 - `Card` (`CardHeader`, `CardFooter`, `CardTitle`, `CardDescription`, `CardContent`)
 - `Collapsible` (`CollapsibleTrigger`, `CollapsibleContent`)
+- `EmptyState` (`EmptyStateIcon`, `EmptyStateTitle`, `EmptyStateDescription`, `EmptyStateAction`)
 - `Skeleton`
 
 ### Forms & Input
@@ -47,6 +48,9 @@ function MyComponent() {
 - `Chart` (`ChartContainer`, `ChartTooltip`, `ChartTooltipContent`, `ChartLegend`, `ChartLegendContent`, `ChartStyle`)
 - `Table` (`TableHeader`, `TableBody`, `TableFooter`, `TableHead`, `TableRow`, `TableCell`, `TableCaption`)
 - `Calendar`
+- `HeatMap`
+- `ProgressBar`
+- `Streak`
 
 ### Overlay & Feedback
 - `Alert` (`AlertTitle`, `AlertDescription`, `alertVariants`)
@@ -59,6 +63,7 @@ function MyComponent() {
 
 ### Navigation
 - `Tabs` (`TabsList`, `TabsTrigger`, `TabsContent`)
+- `BottomNav` (`BottomNavItem`, `BottomNavIcon`, `BottomNavLabel`)
 
 ## Utilities
 - `cn(...inputs: ClassValue[])` - Utility for merging tailwind classes (based on `clsx` and `tailwind-merge`).

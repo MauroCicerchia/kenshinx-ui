@@ -45,7 +45,7 @@ The preset automatically maps the following semantic colors (accessible via stan
 - **Backgrounds**: `background`, `foreground`, `card`, `popover`
 - **Brand Colors**: `primary`, `secondary`, `accent`, `muted`, `destructive`
 - **UI Elements**: `border`, `input`, `ring`
-- **Data Visualization**: `chart-1` through `chart-5`
+- **Data Visualization**: `chart-1` through `chart-5`, `heatmap-0` through `heatmap-4`
 - **Border Radius**: Maps `--radius` to `rounded-lg`, `rounded-md`, and `rounded-sm` classes.
 
 You do *not* need to redefine these in your app unless you want to override the default token values.
