@@ -180,3 +180,10 @@ export {
   ChartStyle,
   type ChartConfig,
 } from "./components/chart";
+
+export {
+  ProgressBar,
+  progressBarVariants,
+  progressBarIndicatorVariants,
+} from "./components/progress-bar";
+export type { ProgressBarProps } from "./components/progress-bar";

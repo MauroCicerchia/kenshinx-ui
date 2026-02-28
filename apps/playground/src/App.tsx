@@ -106,6 +106,7 @@ import {
   ChartLegend,
   ChartLegendContent,
   type ChartConfig,
+  ProgressBar,
 } from "@kenshinx/ui";
 import {
   AlertCircle,
@@ -1438,6 +1439,39 @@ function App() {
                   <Area dataKey="stocks" type="monotone" fill="var(--color-stocks)" fillOpacity={0.3} stroke="var(--color-stocks)" stackId="a" />
                 </AreaChart>
               </ChartContainer>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* ProgressBar Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>ProgressBar Component</CardTitle>
+            <CardDescription>
+              A visual progress bar with variants and sizes, built on Radix UI.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="space-y-3">
+              <h4 className="text-sm font-medium text-foreground">Variants</h4>
+              <div className="space-y-2">
+                <ProgressBar value={60} />
+                <ProgressBar value={80} variant="success" />
+                <ProgressBar value={45} variant="warning" />
+                <ProgressBar value={70} variant="info" />
+              </div>
+            </div>
+            <div className="space-y-3">
+              <h4 className="text-sm font-medium text-foreground">Sizes</h4>
+              <div className="space-y-2">
+                <ProgressBar value={60} size="sm" />
+                <ProgressBar value={60} size="default" />
+                <ProgressBar value={60} size="lg" />
+              </div>
+            </div>
+            <div className="space-y-3">
+              <h4 className="text-sm font-medium text-foreground">With Label</h4>
+              <ProgressBar value={75} label="75% Complete" variant="success" />
             </div>
           </CardContent>
         </Card>
