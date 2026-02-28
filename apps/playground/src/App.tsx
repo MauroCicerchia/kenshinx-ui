@@ -113,6 +113,10 @@ import {
   EmptyStateDescription,
   EmptyStateAction,
   Streak,
+  BottomNav,
+  BottomNavIcon,
+  BottomNavItem,
+  BottomNavLabel,
 } from "@kenshinx/ui";
 import {
   AlertCircle,
@@ -133,6 +137,9 @@ import {
   Inbox,
   FileText,
   Zap,
+  Compass,
+  BookOpen,
+  Home,
 } from "lucide-react";
 import {
   Bar,
@@ -284,6 +291,7 @@ function FormDemo() {
 function App() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [activeNav, setActiveNav] = useState("today");
   const [isDark, setIsDark] = useState(() => {
     // Check for saved preference or system preference
     if (typeof window !== "undefined") {
@@ -1559,6 +1567,61 @@ function App() {
                 <Streak count={5} size="default" label="default" />
                 <Streak count={5} size="lg" label="large" />
               </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* BottomNav Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>BottomNav Component</CardTitle>
+            <CardDescription>
+              A mobile bottom navigation bar compound component.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="relative h-64 w-full max-w-sm overflow-hidden rounded-xl border bg-muted/20 pb-safe">
+              <div className="flex h-full items-center justify-center p-4">
+                <p className="text-sm text-muted-foreground">Current view: {activeNav}</p>
+              </div>
+              <BottomNav className="absolute sm:absolute">
+                <BottomNavItem
+                  isActive={activeNav === "today"}
+                  onClick={() => setActiveNav("today")}
+                >
+                  <BottomNavIcon>
+                    <Home />
+                  </BottomNavIcon>
+                  <BottomNavLabel>Today</BottomNavLabel>
+                </BottomNavItem>
+                <BottomNavItem
+                  isActive={activeNav === "quests"}
+                  onClick={() => setActiveNav("quests")}
+                >
+                  <BottomNavIcon>
+                    <Compass />
+                  </BottomNavIcon>
+                  <BottomNavLabel>Quests</BottomNavLabel>
+                </BottomNavItem>
+                <BottomNavItem
+                  isActive={activeNav === "chapters"}
+                  onClick={() => setActiveNav("chapters")}
+                >
+                  <BottomNavIcon>
+                    <BookOpen />
+                  </BottomNavIcon>
+                  <BottomNavLabel>Chapters</BottomNavLabel>
+                </BottomNavItem>
+                <BottomNavItem
+                  isActive={activeNav === "profile"}
+                  onClick={() => setActiveNav("profile")}
+                >
+                  <BottomNavIcon>
+                    <User />
+                  </BottomNavIcon>
+                  <BottomNavLabel>Profile</BottomNavLabel>
+                </BottomNavItem>
+              </BottomNav>
             </div>
           </CardContent>
         </Card>
