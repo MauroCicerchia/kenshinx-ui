@@ -106,6 +106,18 @@ import {
   ChartLegend,
   ChartLegendContent,
   type ChartConfig,
+  ProgressBar,
+  EmptyState,
+  EmptyStateIcon,
+  EmptyStateTitle,
+  EmptyStateDescription,
+  EmptyStateAction,
+  Streak,
+  BottomNav,
+  BottomNavIcon,
+  BottomNavItem,
+  BottomNavLabel,
+  HeatMap,
 } from "@kenshinx/ui";
 import {
   AlertCircle,
@@ -123,6 +135,12 @@ import {
   Calculator,
   Smile,
   Calendar as CalendarIcon,
+  Inbox,
+  FileText,
+  Zap,
+  Compass,
+  BookOpen,
+  Home,
 } from "lucide-react";
 import {
   Bar,
@@ -147,6 +165,27 @@ const formSchema = z.object({
   bio: z.string().max(160).optional(),
   notifications: z.boolean().default(false),
 });
+
+// Generate dummy heatmap data
+const generateHeatMapData = () => {
+  const entries = [];
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  for (let i = 365; i >= 0; i--) {
+    const d = new Date(today);
+    d.setDate(d.getDate() - i);
+    // 20% chance of 0, otherwise random 1-10
+    const val = Math.random() > 0.2 ? Math.floor(Math.random() * 10) + 1 : 0;
+    entries.push({
+      date: d.toISOString().split("T")[0],
+      value: val,
+    });
+  }
+  return entries;
+};
+
+const heatMapDemoData = generateHeatMapData();
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -274,6 +313,7 @@ function FormDemo() {
 function App() {
   const [dialogOpen, setDialogOpen] = useState(false);
   const [inputValue, setInputValue] = useState("");
+  const [activeNav, setActiveNav] = useState("today");
   const [isDark, setIsDark] = useState(() => {
     // Check for saved preference or system preference
     if (typeof window !== "undefined") {
@@ -1438,6 +1478,187 @@ function App() {
                   <Area dataKey="stocks" type="monotone" fill="var(--color-stocks)" fillOpacity={0.3} stroke="var(--color-stocks)" stackId="a" />
                 </AreaChart>
               </ChartContainer>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* ProgressBar Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>ProgressBar Component</CardTitle>
+            <CardDescription>
+              A visual progress bar with variants and sizes, built on Radix UI.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="space-y-3">
+              <h4 className="text-sm font-medium text-foreground">Variants</h4>
+              <div className="space-y-2">
+                <ProgressBar value={60} />
+                <ProgressBar value={80} variant="success" />
+                <ProgressBar value={45} variant="warning" />
+                <ProgressBar value={70} variant="info" />
+              </div>
+            </div>
+            <div className="space-y-3">
+              <h4 className="text-sm font-medium text-foreground">Sizes</h4>
+              <div className="space-y-2">
+                <ProgressBar value={60} size="sm" />
+                <ProgressBar value={60} size="default" />
+                <ProgressBar value={60} size="lg" />
+              </div>
+            </div>
+            <div className="space-y-3">
+              <h4 className="text-sm font-medium text-foreground">With Label</h4>
+              <ProgressBar value={75} label="75% Complete" variant="success" />
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* EmptyState Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>EmptyState Component</CardTitle>
+            <CardDescription>
+              A composable placeholder for empty lists, search results, or initial states.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-6">
+            <div className="space-y-3">
+              <h4 className="text-sm font-medium text-foreground">Default</h4>
+              <EmptyState className="rounded-lg border bg-background">
+                <EmptyStateIcon>
+                  <Inbox />
+                </EmptyStateIcon>
+                <EmptyStateTitle>No messages</EmptyStateTitle>
+                <EmptyStateDescription>
+                  You don't have any messages in your inbox. Check back later.
+                </EmptyStateDescription>
+              </EmptyState>
+            </div>
+
+            <div className="space-y-3">
+              <h4 className="text-sm font-medium text-foreground">With Action</h4>
+              <EmptyState className="rounded-lg border bg-background" size="sm">
+                <EmptyStateIcon>
+                  <FileText />
+                </EmptyStateIcon>
+                <EmptyStateTitle>No documents created</EmptyStateTitle>
+                <EmptyStateDescription>
+                  You haven't written anything down yet. Create your first document.
+                </EmptyStateDescription>
+                <EmptyStateAction>
+                  <Button size="sm">Create Document</Button>
+                </EmptyStateAction>
+              </EmptyState>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Streak Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Streak Component</CardTitle>
+            <CardDescription>
+              A compact widget for showing consecutive completion streaks.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-8">
+            <div className="flex flex-wrap items-end gap-8">
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium text-foreground">Inactive (0)</h4>
+                <Streak count={0} label="day streak" />
+              </div>
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium text-foreground">Active (1-6)</h4>
+                <Streak count={5} label="day streak" />
+              </div>
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium text-foreground">Hot (7+)</h4>
+                <Streak count={12} label="day streak" hotThreshold={7} />
+              </div>
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium text-foreground">Custom Icon</h4>
+                <Streak count={3} label="zaps" icon={<Zap className="h-[1em] w-[1em]" />} />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <h4 className="text-sm font-medium text-foreground">Sizes</h4>
+              <div className="flex items-center gap-6 rounded-lg border bg-muted/20 p-4">
+                <Streak count={5} size="sm" label="small" />
+                <Streak count={5} size="default" label="default" />
+                <Streak count={5} size="lg" label="large" />
+              </div>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* BottomNav Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>BottomNav Component</CardTitle>
+            <CardDescription>
+              A mobile bottom navigation bar compound component.
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <div className="relative h-64 w-full max-w-sm overflow-hidden rounded-xl border bg-muted/20 pb-safe">
+              <div className="flex h-full items-center justify-center p-4">
+                <p className="text-sm text-muted-foreground">Current view: {activeNav}</p>
+              </div>
+              <BottomNav className="absolute sm:absolute">
+                <BottomNavItem
+                  isActive={activeNav === "today"}
+                  onClick={() => setActiveNav("today")}
+                >
+                  <BottomNavIcon>
+                    <Home />
+                  </BottomNavIcon>
+                  <BottomNavLabel>Today</BottomNavLabel>
+                </BottomNavItem>
+                <BottomNavItem
+                  isActive={activeNav === "quests"}
+                  onClick={() => setActiveNav("quests")}
+                >
+                  <BottomNavIcon>
+                    <Compass />
+                  </BottomNavIcon>
+                  <BottomNavLabel>Quests</BottomNavLabel>
+                </BottomNavItem>
+                <BottomNavItem
+                  isActive={activeNav === "chapters"}
+                  onClick={() => setActiveNav("chapters")}
+                >
+                  <BottomNavIcon>
+                    <BookOpen />
+                  </BottomNavIcon>
+                  <BottomNavLabel>Chapters</BottomNavLabel>
+                </BottomNavItem>
+                <BottomNavItem
+                  isActive={activeNav === "profile"}
+                  onClick={() => setActiveNav("profile")}
+                >
+                  <BottomNavIcon>
+                    <User />
+                  </BottomNavIcon>
+                  <BottomNavLabel>Profile</BottomNavLabel>
+                </BottomNavItem>
+              </BottomNav>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* HeatMap Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>HeatMap Component</CardTitle>
+            <CardDescription>
+              A GitHub-style contribution grid for visualizing daily activity over time.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="rounded-lg border bg-card p-6">
+               <HeatMap data={heatMapDemoData} />
             </div>
           </CardContent>
         </Card>

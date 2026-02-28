@@ -180,3 +180,35 @@ export {
   ChartStyle,
   type ChartConfig,
 } from "./components/chart";
+
+export {
+  ProgressBar,
+  progressBarVariants,
+  progressBarIndicatorVariants,
+} from "./components/progress-bar";
+export type { ProgressBarProps } from "./components/progress-bar";
+
+export {
+  EmptyState,
+  EmptyStateIcon,
+  EmptyStateTitle,
+  EmptyStateDescription,
+  EmptyStateAction,
+  emptyStateVariants,
+} from "./components/empty-state";
+export type { EmptyStateProps } from "./components/empty-state";
+
+export { Streak, streakVariants } from "./components/streak";
+export type { StreakProps } from "./components/streak";
+
+export {
+  BottomNav,
+  BottomNavItem,
+  BottomNavIcon,
+  BottomNavLabel,
+  bottomNavItemVariants,
+} from "./components/bottom-nav";
+export type { BottomNavItemProps } from "./components/bottom-nav";
+
+export { HeatMap } from "./components/heat-map";
+export type { HeatMapProps, HeatMapEntry } from "./components/heat-map";
