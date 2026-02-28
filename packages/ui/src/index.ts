@@ -187,3 +187,13 @@ export {
   progressBarIndicatorVariants,
 } from "./components/progress-bar";
 export type { ProgressBarProps } from "./components/progress-bar";
+
+export {
+  EmptyState,
+  EmptyStateIcon,
+  EmptyStateTitle,
+  EmptyStateDescription,
+  EmptyStateAction,
+  emptyStateVariants,
+} from "./components/empty-state";
+export type { EmptyStateProps } from "./components/empty-state";
