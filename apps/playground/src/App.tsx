@@ -117,6 +117,7 @@ import {
   BottomNavIcon,
   BottomNavItem,
   BottomNavLabel,
+  HeatMap,
 } from "@kenshinx/ui";
 import {
   AlertCircle,
@@ -164,6 +165,27 @@ const formSchema = z.object({
   bio: z.string().max(160).optional(),
   notifications: z.boolean().default(false),
 });
+
+// Generate dummy heatmap data
+const generateHeatMapData = () => {
+  const entries = [];
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+
+  for (let i = 365; i >= 0; i--) {
+    const d = new Date(today);
+    d.setDate(d.getDate() - i);
+    // 20% chance of 0, otherwise random 1-10
+    const val = Math.random() > 0.2 ? Math.floor(Math.random() * 10) + 1 : 0;
+    entries.push({
+      date: d.toISOString().split("T")[0],
+      value: val,
+    });
+  }
+  return entries;
+};
+
+const heatMapDemoData = generateHeatMapData();
 
 type FormValues = z.infer<typeof formSchema>;
 
@@ -1622,6 +1644,21 @@ function App() {
                   <BottomNavLabel>Profile</BottomNavLabel>
                 </BottomNavItem>
               </BottomNav>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* HeatMap Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>HeatMap Component</CardTitle>
+            <CardDescription>
+              A GitHub-style contribution grid for visualizing daily activity over time.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-4">
+            <div className="rounded-lg border bg-card p-6">
+               <HeatMap data={heatMapDemoData} />
             </div>
           </CardContent>
         </Card>

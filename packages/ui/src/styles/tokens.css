@@ -59,6 +59,13 @@
     --chart-3: 262 84% 58%;
     --chart-4: 263 69% 50%;
     --chart-5: 263 70% 42%;
+
+    /* HeatMap Colors */
+    --heatmap-0: 283 41% 94%;
+    --heatmap-1: 255 93% 86%;
+    --heatmap-2: 255 93% 76%;
+    --heatmap-3: 258 92% 67%;
+    --heatmap-4: 263 69% 50%;
   }
 
   .dark {
@@ -105,6 +112,13 @@
     --chart-3: 258 92% 67%;
     --chart-4: 262 84% 58%;
     --chart-5: 263 69% 50%;
+
+    /* HeatMap Colors */
+    --heatmap-0: 270 18% 20%;
+    --heatmap-1: 267 19% 35%;
+    --heatmap-2: 258 92% 67%;
+    --heatmap-3: 255 93% 76%;
+    --heatmap-4: 256 100% 83%;
   }
 }
 
