@@ -197,3 +197,6 @@ export {
   emptyStateVariants,
 } from "./components/empty-state";
 export type { EmptyStateProps } from "./components/empty-state";
+
+export { Streak, streakVariants } from "./components/streak";
+export type { StreakProps } from "./components/streak";
