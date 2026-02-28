@@ -112,6 +112,7 @@ import {
   EmptyStateTitle,
   EmptyStateDescription,
   EmptyStateAction,
+  Streak,
 } from "@kenshinx/ui";
 import {
   AlertCircle,
@@ -131,6 +132,7 @@ import {
   Calendar as CalendarIcon,
   Inbox,
   FileText,
+  Zap,
 } from "lucide-react";
 import {
   Bar,
@@ -1519,6 +1521,44 @@ function App() {
                   <Button size="sm">Create Document</Button>
                 </EmptyStateAction>
               </EmptyState>
+            </div>
+          </CardContent>
+        </Card>
+
+        {/* Streak Component */}
+        <Card>
+          <CardHeader>
+            <CardTitle>Streak Component</CardTitle>
+            <CardDescription>
+              A compact widget for showing consecutive completion streaks.
+            </CardDescription>
+          </CardHeader>
+          <CardContent className="space-y-8">
+            <div className="flex flex-wrap items-end gap-8">
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium text-foreground">Inactive (0)</h4>
+                <Streak count={0} label="day streak" />
+              </div>
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium text-foreground">Active (1-6)</h4>
+                <Streak count={5} label="day streak" />
+              </div>
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium text-foreground">Hot (7+)</h4>
+                <Streak count={12} label="day streak" hotThreshold={7} />
+              </div>
+              <div className="space-y-2">
+                <h4 className="text-sm font-medium text-foreground">Custom Icon</h4>
+                <Streak count={3} label="zaps" icon={<Zap className="h-[1em] w-[1em]" />} />
+              </div>
+            </div>
+            <div className="space-y-2">
+              <h4 className="text-sm font-medium text-foreground">Sizes</h4>
+              <div className="flex items-center gap-6 rounded-lg border bg-muted/20 p-4">
+                <Streak count={5} size="sm" label="small" />
+                <Streak count={5} size="default" label="default" />
+                <Streak count={5} size="lg" label="large" />
+              </div>
             </div>
           </CardContent>
         </Card>
