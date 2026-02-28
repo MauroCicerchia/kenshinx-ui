@@ -21,6 +21,7 @@ npm install @kenshinx/ui \
   @radix-ui/react-switch \
   @radix-ui/react-tabs \
   @radix-ui/react-tooltip \
+  @radix-ui/react-progress \
   react-hook-form \
   @hookform/resolvers \
   zod \
