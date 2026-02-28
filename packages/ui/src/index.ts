@@ -209,3 +209,6 @@ export {
   bottomNavItemVariants,
 } from "./components/bottom-nav";
 export type { BottomNavItemProps } from "./components/bottom-nav";
+
+export { HeatMap } from "./components/heat-map";
+export type { HeatMapProps, HeatMapEntry } from "./components/heat-map";
