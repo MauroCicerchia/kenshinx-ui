@@ -39,3 +39,8 @@ coverage/
 
 # Misc
 *.local
+
+# Agent skills
+.agent/
+.agents/
+!skills/
