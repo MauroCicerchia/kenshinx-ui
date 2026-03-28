@@ -1,176 +1,125 @@
 import { Meta } from "@storybook/blocks";
 
-<Meta title="Getting Started/Theming" />
+<Meta title="Foundations/Theming" />
 
 # Theming
 
-@kenshinx/ui uses CSS variables for theming, making it easy to customize colors, border radius, and other design tokens.
+`@kenshinx/ui` uses CSS variables as its theme contract. The Tailwind preset maps semantic utilities to those variables, so token overrides cascade through the full library.
 
 ## How It Works
 
 The library ships with:
 
-1. **CSS Variables** - Design tokens defined in `@kenshinx/ui/styles.css`
-2. **Tailwind Preset** - Maps Tailwind classes to CSS variables
+1. `@kenshinx/ui/styles.css` for token definitions
+2. `@kenshinx/ui/tailwind-preset` for semantic Tailwind mappings
 
-All components reference these CSS variables, so changing them will update the entire UI.
+Use both together:
 
-## Default Theme
+```ts
+import "@kenshinx/ui/styles.css";
+import kenshinPreset from "@kenshinx/ui/tailwind-preset";
+```
 
-The default theme includes light and dark modes:
+## Default Theme Shape
 
 ```css
 :root {
-  /* Light mode */
   --background: 0 0% 100%;
   --foreground: 240 10% 3.9%;
   --primary: 240 5.9% 10%;
   --primary-foreground: 0 0% 98%;
-  /* ... more tokens */
+  --radius: 0.5rem;
 }
 
 .dark {
-  /* Dark mode */
   --background: 240 10% 3.9%;
   --foreground: 0 0% 98%;
   --primary: 0 0% 98%;
   --primary-foreground: 240 5.9% 10%;
-  /* ... more tokens */
 }
 ```
 
-## Customizing Colors
-
-Override CSS variables in your app's CSS:
+## Override Tokens
 
 ```css
-/* your-app/styles.css */
 @import "@kenshinx/ui/styles.css";
 
 :root {
-  /* Custom blue primary */
-  --primary: 220 90% 56%;
-  --primary-foreground: 0 0% 100%;
-
-  /* Custom accent */
-  --accent: 200 80% 50%;
-  --accent-foreground: 0 0% 100%;
-}
-
-.dark {
-  /* Custom dark mode primary */
-  --primary: 220 70% 60%;
-  --primary-foreground: 0 0% 10%;
-}
-```
-
-## Customizing Border Radius
-
-The `--radius` variable controls the default border radius:
-
-```css
-:root {
-  /* More rounded (default is 0.5rem) */
-  --radius: 0.75rem;
-
-  /* Sharp corners */
-  --radius: 0;
-
-  /* Very rounded */
-  --radius: 1rem;
-}
-```
-
-Components use derived values:
-- `rounded-lg` = `var(--radius)`
-- `rounded-md` = `calc(var(--radius) - 2px)`
-- `rounded-sm` = `calc(var(--radius) - 4px)`
-
-## Available Tokens
-
-### Colors
-
-| Token | Description |
-|-------|-------------|
-| `--background` | Page background |
-| `--foreground` | Default text color |
-| `--primary` | Primary brand color |
-| `--primary-foreground` | Text on primary |
-| `--secondary` | Secondary color |
-| `--secondary-foreground` | Text on secondary |
-| `--muted` | Muted backgrounds |
-| `--muted-foreground` | Muted text |
-| `--accent` | Accent color for highlights |
-| `--accent-foreground` | Text on accent |
-| `--destructive` | Error/danger color |
-| `--destructive-foreground` | Text on destructive |
-| `--border` | Default border color |
-| `--input` | Input border color |
-| `--ring` | Focus ring color |
-
-### Other Tokens
-
-| Token | Description |
-|-------|-------------|
-| `--radius` | Default border radius |
-| `--chart-1` to `--chart-5` | Chart/data viz colors |
-
-## Dark Mode
-
-Enable dark mode by adding the `dark` class to your `<html>` element:
-
-```tsx
-// Toggle dark mode
-document.documentElement.classList.toggle("dark");
-```
-
-Or use a theme provider:
-
-```tsx
-function ThemeToggle() {
-  const [isDark, setIsDark] = useState(false);
-
-  useEffect(() => {
-    if (isDark) {
-      document.documentElement.classList.add("dark");
-    } else {
-      document.documentElement.classList.remove("dark");
-    }
-  }, [isDark]);
-
-  return (
-    <Switch checked={isDark} onCheckedChange={setIsDark} />
-  );
-}
-```
-
-## Example: Brand Theme
-
-Here's an example of a complete brand customization:
-
-```css
-:root {
-  /* Brand blue palette */
   --primary: 221 83% 53%;
   --primary-foreground: 210 40% 98%;
-
-  /* Warmer grays */
-  --background: 30 20% 98%;
-  --foreground: 20 14% 4%;
-  --muted: 30 20% 96%;
-  --muted-foreground: 20 10% 40%;
-
-  /* Larger radius for friendlier feel */
+  --accent: 199 89% 48%;
+  --accent-foreground: 210 40% 98%;
   --radius: 0.75rem;
 }
 
 .dark {
   --primary: 217 91% 60%;
   --primary-foreground: 222 47% 11%;
+}
+```
 
+## Core Tokens
+
+### Colors
+
+| Token | Purpose |
+|-------|---------|
+| `--background` | App background |
+| `--foreground` | Default text color |
+| `--primary` | Primary actions and emphasis |
+| `--primary-foreground` | Text on primary surfaces |
+| `--secondary` | Secondary surfaces |
+| `--secondary-foreground` | Text on secondary surfaces |
+| `--muted` | Subtle backgrounds |
+| `--muted-foreground` | Secondary text |
+| `--accent` | Highlight color |
+| `--accent-foreground` | Text on accent surfaces |
+| `--destructive` | Error and destructive actions |
+| `--destructive-foreground` | Text on destructive surfaces |
+| `--border` | Default borders |
+| `--input` | Input borders |
+| `--ring` | Focus rings |
+
+### Other Tokens
+
+| Token | Purpose |
+|-------|---------|
+| `--radius` | Base border radius |
+| `--chart-1` to `--chart-5` | Chart color scale |
+
+## Radius Mapping
+
+The preset derives radius utilities from `--radius`:
+
+- `rounded-lg` -> `var(--radius)`
+- `rounded-md` -> `calc(var(--radius) - 2px)`
+- `rounded-sm` -> `calc(var(--radius) - 4px)`
+
+## Dark Mode
+
+Dark mode is class-based. Toggle the `dark` class on the root element used by your app.
+
+```ts
+document.documentElement.classList.toggle("dark");
+```
+
+## Brand Example
+
+```css
+:root {
+  --background: 30 20% 98%;
+  --foreground: 20 14% 4%;
+  --primary: 221 83% 53%;
+  --primary-foreground: 210 40% 98%;
+  --muted: 30 20% 96%;
+  --muted-foreground: 20 10% 40%;
+  --radius: 0.75rem;
+}
+
+.dark {
   --background: 222 47% 11%;
   --foreground: 210 40% 98%;
-  --muted: 217 33% 17%;
-  --muted-foreground: 215 20% 65%;
+  --primary: 217 91% 60%;
+  --primary-foreground: 222 47% 11%;
 }
 ```
