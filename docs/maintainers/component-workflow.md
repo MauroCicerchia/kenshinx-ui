@@ -58,6 +58,8 @@ Pay attention to:
 
 No hardcoded design values. Use tokens and Tailwind semantics already mapped by the preset.
 
+The canonical theme spec lives in [`docs/maintainers/design-system.md`](./design-system.md).
+
 Examples:
 
 ```tsx
@@ -74,6 +76,7 @@ Use:
 - Tailwind radius classes backed by `--radius`
 - the shared `cn()` helper for class merging
 - `class-variance-authority` when the component has meaningful variants
+- the documented token meanings from the design system instead of inventing new color semantics
 
 ### Component Patterns
 
