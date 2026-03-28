@@ -1,34 +1,20 @@
 #!/bin/bash
-# Description: Helper script to install @kenshinx/ui and all peer dependencies
+# Description: Helper script to install @kenshinx/ui with required peers.
 
-echo "Installing @kenshinx/ui and dependencies..."
+set -euo pipefail
 
-npm install @kenshinx/ui \
-  lucide-react \
-  class-variance-authority \
-  clsx \
-  tailwind-merge \
-  tailwindcss-animate \
-  @radix-ui/react-avatar \
-  @radix-ui/react-checkbox \
-  @radix-ui/react-collapsible \
-  @radix-ui/react-dialog \
-  @radix-ui/react-dropdown-menu \
-  @radix-ui/react-label \
-  @radix-ui/react-popover \
-  @radix-ui/react-select \
-  @radix-ui/react-slot \
-  @radix-ui/react-switch \
-  @radix-ui/react-tabs \
-  @radix-ui/react-tooltip \
-  @radix-ui/react-progress \
-  react-hook-form \
-  @hookform/resolvers \
-  zod \
-  recharts \
-  react-day-picker \
-  date-fns \
-  sonner \
-  cmdk
+echo "Installing @kenshinx/ui with required peer dependencies..."
+npm install @kenshinx/ui react react-dom tailwindcss
 
-echo "Dependencies installed successfully!"
+if [[ "${1:-}" == "" ]]; then
+  :
+elif [[ "${1:-}" == "--with-optional-peers" ]]; then
+  echo "Installing optional peers for form and chart components..."
+  npm install recharts react-hook-form @hookform/resolvers zod
+else
+  echo "Unknown option: ${1}" >&2
+  echo "Usage: ./setup.sh [--with-optional-peers]" >&2
+  exit 1
+fi
+
+echo "Installation completed successfully."

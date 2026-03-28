@@ -1,10 +1,10 @@
 # @kenshinx/ui Styling & Theming
 
-The `@kenshinx/ui` library provides a comprehensive design system driven by CSS Variables and a Tailwind CSS preset.
+`@kenshinx/ui` uses CSS variables plus a Tailwind preset. To make components render correctly, wire both the stylesheet and the preset.
 
 ## 1. Import Global Styles
 
-In your application's global CSS (e.g., `app/globals.css` or `src/index.css`), you must import the UI library's base tokens. This provides the CSS variables for colors, radius, and the dark mode `.dark` selector.
+In your application's global CSS (for example `app/globals.css` or `src/index.css`), import the UI library tokens. This provides the CSS variables for colors, radius, and the `.dark` overrides.
 
 ```css
 @import "@kenshinx/ui/styles.css";
@@ -12,11 +12,11 @@ In your application's global CSS (e.g., `app/globals.css` or `src/index.css`), y
 /* Your custom CSS follows */
 ```
 
-*(Alternatively, ensure your build tool handles `import "@kenshinx/ui/styles.css"` in your top-level layout file).*
+If your app imports CSS from a layout or entry file instead, `import "@kenshinx/ui/styles.css"` there is also valid.
 
 ## 2. Configure Tailwind CSS
 
-Update your `tailwind.config.ts` (or `tailwind.config.js`) to use the provided preset. This automatically configures your theme to map to the CSS variables exported by the styles above.
+Update `tailwind.config.ts` or `tailwind.config.js` to use the preset. This maps the Tailwind theme to the exported CSS variables.
 
 ```typescript
 import type { Config } from "tailwindcss";
@@ -29,18 +29,24 @@ const config = {
     "./components/**/*.{ts,tsx}",
     "./app/**/*.{ts,tsx}",
     "./src/**/*.{ts,tsx}",
-    // Important: Scan the UI library for classes
-    "./node_modules/@kenshinx/ui/dist/**/*.js" 
+    "./node_modules/@kenshinx/ui/dist/**/*.js"
   ],
-  // You can still extend the theme here if needed
 } satisfies Config;
 
 export default config;
 ```
 
-## Available Theme Variables
+## 3. Optional Peer Dependencies
 
-The preset automatically maps the following semantic colors (accessible via standard tailwind utilities like `bg-primary`, `text-muted-foreground`, `border-border`, etc.):
+Install optional peers only if your chosen components need them:
+
+- `recharts` for chart components
+- `react-hook-form` for form primitives
+- `@hookform/resolvers` and `zod` for schema-based form validation examples
+
+## 4. Available Theme Variables
+
+The preset maps semantic variables to Tailwind utilities such as `bg-primary`, `text-muted-foreground`, and `border-border`:
 
 - **Backgrounds**: `background`, `foreground`, `card`, `popover`
 - **Brand Colors**: `primary`, `secondary`, `accent`, `muted`, `destructive`
@@ -48,4 +54,4 @@ The preset automatically maps the following semantic colors (accessible via stan
 - **Data Visualization**: `chart-1` through `chart-5`, `heatmap-0` through `heatmap-4`
 - **Border Radius**: Maps `--radius` to `rounded-lg`, `rounded-md`, and `rounded-sm` classes.
 
-You do *not* need to redefine these in your app unless you want to override the default token values.
+You do not need to redefine these variables unless you want to override the library defaults in your application.

@@ -1,28 +1,31 @@
 ---
 name: kenshinx-ui
-description: Comprehensive UI component library based on Tailwind CSS and shadcn/ui. Use this skill when the user asks to build or style UI using the @kenshinx/ui library, or when you need access to its React components (e.g., Button, Form, Dialog).
+description: Use this skill when building or styling React UIs with @kenshinx/ui, wiring its Tailwind preset and styles.css tokens, or choosing/importing its components such as Button, Form, Dialog, Calendar, Table, toast, and chart primitives.
 ---
 
 # @kenshinx/ui
 
-This skill provides access to `@kenshinx/ui`, a complete, accessible, and customizable React UI component library. 
+This skill provides access to `@kenshinx/ui`, a React UI component library built on Tailwind CSS and shadcn/ui patterns.
 
 ## Quick Start
 
-If `@kenshinx/ui` is not installed in the target project, install it and its peer dependencies first:
+If `@kenshinx/ui` is not installed in the target project, install the required packages first:
 ```bash
-npm install @kenshinx/ui lucide-react class-variance-authority clsx tailwind-merge tailwindcss-animate \
-  @radix-ui/react-avatar @radix-ui/react-checkbox @radix-ui/react-collapsible @radix-ui/react-dialog \
-  @radix-ui/react-dropdown-menu @radix-ui/react-label @radix-ui/react-popover @radix-ui/react-select \
-  @radix-ui/react-slot @radix-ui/react-switch @radix-ui/react-tabs @radix-ui/react-tooltip @radix-ui/react-progress \
-  react-hook-form @hookform/resolvers zod recharts react-day-picker date-fns sonner cmdk
+npm install @kenshinx/ui react react-dom tailwindcss
 ```
-*(Alternatively, check `scripts/setup.sh` if provided)*
+
+Install optional peers only if the components you use need them:
+
+```bash
+npm install recharts react-hook-form @hookform/resolvers zod
+```
+
+Use `scripts/setup.sh` for a minimal install, or `scripts/setup.sh --with-optional-peers` for the optional form/chart peers as well.
 
 ## Components & Usage
 
-For a list of all available `@kenshinx/ui` components and how to import them, read [references/components.md](references/components.md).
+Read [references/components.md](references/components.md) for the exported components and helper utilities. Use the exact export names from that file when generating imports.
 
 ## Styling & Theming
 
-To understand how to apply the design system, setup the Tailwind CSS preset, and use the color tokens, read [references/styling.md](references/styling.md).
+Read [references/styling.md](references/styling.md) to wire `styles.css`, configure the Tailwind preset, and use the design tokens correctly.

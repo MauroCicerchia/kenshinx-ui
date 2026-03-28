@@ -1,6 +1,6 @@
 # @kenshinx/ui Components
 
-The `@kenshinx/ui` library exposes the following UI components. You can import any of these directly from `@kenshinx/ui`.
+The `@kenshinx/ui` library exposes the following exports. Import them directly from `@kenshinx/ui`.
 
 ## General Usage Idea
 
@@ -45,7 +45,7 @@ function MyComponent() {
 - `Textarea`
 
 ### Data Display
-- `Chart` (`ChartContainer`, `ChartTooltip`, `ChartTooltipContent`, `ChartLegend`, `ChartLegendContent`, `ChartStyle`)
+- `ChartContainer`, `ChartTooltip`, `ChartTooltipContent`, `ChartLegend`, `ChartLegendContent`, `ChartStyle`
 - `Table` (`TableHeader`, `TableBody`, `TableFooter`, `TableHead`, `TableRow`, `TableCell`, `TableCaption`)
 - `Calendar`
 - `HeatMap`
@@ -65,5 +65,21 @@ function MyComponent() {
 - `Tabs` (`TabsList`, `TabsTrigger`, `TabsContent`)
 - `BottomNav` (`BottomNavItem`, `BottomNavIcon`, `BottomNavLabel`)
 
-## Utilities
+## Utility Exports
 - `cn(...inputs: ClassValue[])` - Utility for merging tailwind classes (based on `clsx` and `tailwind-merge`).
+
+## Type and Variant Exports
+
+- `ComboboxProps`, `ComboboxOption`
+- `ChartConfig`
+- `ProgressBarProps`, `progressBarVariants`, `progressBarIndicatorVariants`
+- `EmptyStateProps`, `emptyStateVariants`
+- `StreakProps`, `streakVariants`
+- `BottomNavItemProps`, `bottomNavItemVariants`
+- `HeatMapProps`, `HeatMapEntry`
+
+## Notes
+
+- There is no `Chart` export. Use the specific chart primitives listed above.
+- `Form` components require `react-hook-form`, and schema resolver examples may also require `@hookform/resolvers` and `zod`.
+- Chart components require `recharts`.
