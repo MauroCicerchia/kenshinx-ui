@@ -1,30 +1,106 @@
 import { Meta } from "@storybook/blocks";
+import { DocsCodeBlock } from "../components/DocsCodeBlock";
+import {
+  Badge,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@kenshinx/ui";
 
 <Meta title="Getting Started/Introduction" />
 
-# @kenshinx/ui
+<div className="kx-docs-shell not-prose">
+  <section className="kx-docs-hero">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,hsl(var(--primary)/0.28),transparent_34%),radial-gradient(circle_at_bottom_right,hsl(var(--accent)/0.55),transparent_42%)]" />
+    <div className="relative space-y-8 p-8 md:p-10">
+      <div className="space-y-4">
+        <span className="kx-docs-kicker">Getting Started</span>
+        <div className="space-y-3">
+          <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">
+            Build with a branded default, not a blank slate.
+          </h1>
+          <p className="max-w-3xl text-base leading-7 text-muted-foreground md:text-lg">
+            <code>@kenshinx/ui</code> is a personal component library for
+            shipping product interfaces with soft surfaces, large radii,
+            semantic Tailwind tokens, and Radix-backed accessibility.
+          </p>
+        </div>
+      </div>
 
-`@kenshinx/ui` is a personal React UI library built with Tailwind CSS, Radix primitives, and shadcn/ui patterns.
+      <div className="kx-docs-hero-grid">
+        <div className="rounded-2xl border border-border bg-background/80 p-4 backdrop-blur">
+          <p className="text-sm font-semibold">Token-first styling</p>
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">
+            Build with roles like <code>bg-card</code>, <code>text-foreground</code>,
+            and <code>border-input</code> instead of one-off palette classes.
+          </p>
+        </div>
+        <div className="rounded-2xl border border-border bg-background/80 p-4 backdrop-blur">
+          <p className="text-sm font-semibold">Composable primitives</p>
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">
+            APIs stay close to shadcn/ui and Radix patterns so they remain easy
+            to understand and extend.
+          </p>
+        </div>
+        <div className="rounded-2xl border border-border bg-background/80 p-4 backdrop-blur">
+          <p className="text-sm font-semibold">Library-owned visual language</p>
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">
+            The default theme is intentionally branded, but consumers can still
+            override the token layer without forking components.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-## What You Get
+  <section className="kx-docs-section">
+    <div className="kx-docs-section-head">
+      <div className="flex items-center gap-3">
+        <Badge variant="secondary">Install</Badge>
+        <h2 className="text-2xl font-semibold tracking-tight">
+          Quick start
+        </h2>
+      </div>
+      <p className="max-w-3xl text-sm leading-6 text-muted-foreground">
+        Set up the package once, then the rest of the library follows the same
+        token contract.
+      </p>
+    </div>
+    <Card className="kx-docs-panel">
+      <CardContent className="grid gap-4 p-5 md:p-6">
+        <div className="kx-docs-step-card">
+          <div className="kx-docs-step-head">
+            <span className="kx-docs-step-number">
+              1
+            </span>
+            <div>
+              <p className="text-base font-semibold">Install the package</p>
+              <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                Start with the package plus the required peer dependencies.
+              </p>
+            </div>
+          </div>
+          <DocsCodeBlock
+            code={`npm install @kenshinx/ui react react-dom tailwindcss`}
+          />
+        </div>
 
-- Accessible building blocks with typed React APIs
-- Tailwind-first styling through a shared preset
-- Theme tokens powered by CSS variables
-- Reusable primitives for application and product work
-
-## Install
-
-```bash
-npm install @kenshinx/ui react react-dom tailwindcss
-```
-
-## Quick Start
-
-### 1. Add the Tailwind preset
-
-```ts
-import type { Config } from "tailwindcss";
+        <div className="kx-docs-step-card">
+          <div className="kx-docs-step-head">
+            <span className="kx-docs-step-number">
+              2
+            </span>
+            <div>
+              <p className="text-base font-semibold">Add the preset</p>
+              <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                Pull in the semantic color and radius mappings through Tailwind.
+              </p>
+            </div>
+          </div>
+          <DocsCodeBlock
+            code={`import type { Config } from "tailwindcss";
 import kenshinPreset from "@kenshinx/ui/tailwind-preset";
 
 export default {
@@ -33,48 +109,105 @@ export default {
     "./src/**/*.{js,ts,jsx,tsx}",
     "./node_modules/@kenshinx/ui/dist/**/*.js",
   ],
-} satisfies Config;
-```
+} satisfies Config;`}
+          />
+        </div>
 
-### 2. Import the tokens
-
-```ts
-import "@kenshinx/ui/styles.css";
-```
-
-### 3. Use a component
-
-```tsx
-import {
-  Button,
-  Card,
-  CardContent,
-  CardHeader,
-  CardTitle,
-  Input,
-} from "@kenshinx/ui";
-
-function App() {
-  return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Hello World</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-3">
-        <Input placeholder="Type something..." />
-        <Button>Click me</Button>
+        <div className="kx-docs-step-card">
+          <div className="kx-docs-step-head">
+            <span className="kx-docs-step-number">
+              3
+            </span>
+            <div>
+              <p className="text-base font-semibold">Import the tokens</p>
+              <p className="mt-1 text-sm leading-6 text-muted-foreground">
+                The components expect the shared CSS-variable contract to exist.
+              </p>
+            </div>
+          </div>
+          <DocsCodeBlock code={`import "@kenshinx/ui/styles.css";`} />
+          <div className="kx-docs-note">
+            Rebrand by overriding the variables in your own app. Avoid editing
+            the component source unless the API itself needs to change.
+          </div>
+        </div>
       </CardContent>
     </Card>
-  );
-}
-```
+  </section>
 
-## Documentation Structure
+  <section className="kx-docs-section">
+    <div className="kx-docs-section-head">
+      <div className="flex items-center gap-3">
+        <Badge variant="secondary">Navigate</Badge>
+        <h2 className="text-2xl font-semibold tracking-tight">
+          Use the docs in this order
+        </h2>
+      </div>
+      <p className="max-w-3xl text-sm leading-6 text-muted-foreground">
+        The layout below separates orientation, foundations, and API reference so
+        you do not have to hunt through the sidebar blindly.
+      </p>
+    </div>
+    <div className="kx-docs-grid">
+      <Card className="kx-docs-panel">
+        <CardHeader>
+          <CardTitle className="text-xl">Getting Started</CardTitle>
+          <CardDescription>
+            Orientation, setup, and the fastest path to a working consumer app.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+      <Card className="kx-docs-panel">
+        <CardHeader>
+          <CardTitle className="text-xl">Foundations</CardTitle>
+          <CardDescription>
+            Theme behavior, token roles, and the rules that keep the palette coherent.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+      <Card className="kx-docs-panel">
+        <CardHeader>
+          <CardTitle className="text-xl">Components</CardTitle>
+          <CardDescription>
+            Real APIs, variants, states, and composition patterns for the shipped components.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+    </div>
+  </section>
 
-- `Getting Started`: onboarding and setup
-- `Foundations`: theming and shared design primitives
-- `Components`: the component catalog, props, and examples
+  <section className="kx-docs-grid-2">
+    <Card className="kx-docs-panel">
+      <CardHeader>
+        <CardTitle className="text-xl">Current library surface</CardTitle>
+        <CardDescription>
+          The component set already covers the main product-building categories.
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="flex flex-wrap gap-2">
+        <span className="kx-docs-chip">Forms</span>
+        <span className="kx-docs-chip">Feedback</span>
+        <span className="kx-docs-chip">Navigation</span>
+        <span className="kx-docs-chip">Dialogs</span>
+        <span className="kx-docs-chip">Tables</span>
+        <span className="kx-docs-chip">Charts</span>
+        <span className="kx-docs-chip">Heat maps</span>
+        <span className="kx-docs-chip">Empty states</span>
+      </CardContent>
+    </Card>
 
-## Next Step
-
-Read the [Theming](/docs/foundations-theming--docs) guide before customizing colors, radius, or dark mode.
+    <Card className="kx-docs-panel">
+      <CardHeader>
+        <CardTitle className="text-xl">Recommended reading order</CardTitle>
+        <CardDescription>
+          This keeps customization work aligned with the library instead of fighting it.
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-3 text-sm text-muted-foreground">
+        <p>1. Read [Theming](/docs/foundations-theming--docs) to understand the token model.</p>
+        <p>2. Open the component stories you actually plan to use.</p>
+        <p>3. Copy from stories, then override tokens in your own app instead of forking components.</p>
+      </CardContent>
+    </Card>
+  </section>
+</div>

@@ -1,127 +1,281 @@
 import { Meta } from "@storybook/blocks";
+import { DocsCodeBlock } from "../components/DocsCodeBlock";
+import {
+  Badge,
+  Card,
+  CardContent,
+  CardDescription,
+  CardHeader,
+  CardTitle,
+} from "@kenshinx/ui";
 
 <Meta title="Foundations/Theming" />
 
-# Theming
+<div className="kx-docs-shell not-prose">
+  <section className="kx-docs-hero">
+    <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,hsl(var(--accent)/0.55),transparent_34%),radial-gradient(circle_at_bottom_right,hsl(var(--primary)/0.28),transparent_42%)]" />
+    <div className="relative space-y-8 p-8 md:p-10">
+      <div className="space-y-4">
+        <span className="kx-docs-kicker">Foundations</span>
+        <div className="space-y-3">
+          <h1 className="text-4xl font-semibold tracking-tight md:text-5xl">
+            Theme the library by changing the contract, not the components.
+          </h1>
+          <p className="max-w-3xl text-base leading-7 text-muted-foreground md:text-lg">
+            <code>@kenshinx/ui</code> ships with a lavender-and-violet default
+            theme, large radii, and semantic Tailwind mappings. The intended
+            customization path is token overrides, not component forking.
+          </p>
+        </div>
+      </div>
 
-`@kenshinx/ui` uses CSS variables as its theme contract. The Tailwind preset maps semantic utilities to those variables, so token overrides cascade through the full library.
+      <div className="kx-docs-hero-grid">
+        <div className="rounded-2xl border border-border bg-background/80 p-4 backdrop-blur">
+          <p className="text-sm font-semibold">Recognizable by default</p>
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">
+            The palette is intentionally branded rather than neutral.
+          </p>
+        </div>
+        <div className="rounded-2xl border border-border bg-background/80 p-4 backdrop-blur">
+          <p className="text-sm font-semibold">Semantic in use</p>
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">
+            Components consume token roles like primary, muted, card, and border.
+          </p>
+        </div>
+        <div className="rounded-2xl border border-border bg-background/80 p-4 backdrop-blur">
+          <p className="text-sm font-semibold">Flexible for consumers</p>
+          <p className="mt-2 text-sm leading-6 text-muted-foreground">
+            You can rebrand the library by swapping CSS variables in your app.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
 
-For maintainers, the canonical theme spec lives in `docs/maintainers/design-system.md` in the repository.
+  <section className="space-y-4">
+    <div className="flex items-center gap-3">
+      <Badge variant="secondary">Contract</Badge>
+      <h2 className="text-2xl font-semibold tracking-tight">
+        What the theming layer actually consists of
+      </h2>
+    </div>
+    <div className="kx-docs-grid">
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-xl">1. Token definitions</CardTitle>
+          <CardDescription>
+            <code>@kenshinx/ui/styles.css</code> defines the semantic CSS variables.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-xl">2. Tailwind mappings</CardTitle>
+          <CardDescription>
+            <code>@kenshinx/ui/tailwind-preset</code> maps utilities to those variables.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-xl">3. Consumer overrides</CardTitle>
+          <CardDescription>
+            Rebrand by overriding variables in app CSS while preserving the semantic roles.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+    </div>
+  </section>
 
-## How It Works
+  <section className="kx-docs-grid-2">
+    <Card className="overflow-hidden">
+      <CardHeader>
+        <CardTitle className="text-xl">Light mode direction</CardTitle>
+        <CardDescription>
+          Soft lavender backgrounds, white card surfaces, and bright violet primary actions.
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div className="grid grid-cols-4 gap-3">
+          <div className="space-y-2">
+            <div className="h-16 rounded-2xl border border-border bg-background" />
+            <p className="text-xs text-muted-foreground">background</p>
+          </div>
+          <div className="space-y-2">
+            <div className="h-16 rounded-2xl border border-border bg-card" />
+            <p className="text-xs text-muted-foreground">card</p>
+          </div>
+          <div className="space-y-2">
+            <div className="h-16 rounded-2xl border border-primary bg-primary" />
+            <p className="text-xs text-muted-foreground">primary</p>
+          </div>
+          <div className="space-y-2">
+            <div className="h-16 rounded-2xl border border-accent bg-accent" />
+            <p className="text-xs text-muted-foreground">accent</p>
+          </div>
+        </div>
+        <DocsCodeBlock
+          code={`:root {
+  --background: 283 41% 97%;
+  --foreground: 217 19% 26%;
+  --card: 0 0% 100%;
+  --primary: 255 93% 76%;
+  --secondary: 300 100% 98%;
+  --muted: 269 100% 96%;
+  --accent: 293 53% 93%;
+  --border: 267 85% 92%;
+  --ring: 255 93% 76%;
+  --radius: 1.5rem;
+}`}
+        />
+      </CardContent>
+    </Card>
 
-The library ships with:
+    <Card className="overflow-hidden">
+      <CardHeader>
+        <CardTitle className="text-xl">Dark mode direction</CardTitle>
+        <CardDescription>
+          Warm near-black backgrounds, muted plum surfaces, and brighter violet emphasis.
+        </CardDescription>
+      </CardHeader>
+      <CardContent className="space-y-4">
+        <div className="grid grid-cols-4 gap-3">
+          <div className="space-y-2">
+            <div className="h-16 rounded-2xl border border-border bg-[hsl(var(--background))]" />
+            <p className="text-xs text-muted-foreground">background</p>
+          </div>
+          <div className="space-y-2">
+            <div className="h-16 rounded-2xl border border-border bg-[hsl(270_18%_18%)]" />
+            <p className="text-xs text-muted-foreground">card</p>
+          </div>
+          <div className="space-y-2">
+            <div className="h-16 rounded-2xl border bg-[hsl(256_100%_83%)]" />
+            <p className="text-xs text-muted-foreground">primary</p>
+          </div>
+          <div className="space-y-2">
+            <div className="h-16 rounded-2xl border bg-[hsl(267_19%_30%)]" />
+            <p className="text-xs text-muted-foreground">accent</p>
+          </div>
+        </div>
+        <DocsCodeBlock
+          code={`.dark {
+  --background: 23 15% 10%;
+  --foreground: 227 88% 94%;
+  --card: 270 18% 18%;
+  --primary: 256 100% 83%;
+  --secondary: 273 18% 24%;
+  --muted: 270 18% 24%;
+  --accent: 267 19% 30%;
+  --border: 273 18% 24%;
+  --ring: 256 100% 83%;
+}`}
+        />
+      </CardContent>
+    </Card>
+  </section>
 
-1. `@kenshinx/ui/styles.css` for token definitions
-2. `@kenshinx/ui/tailwind-preset` for semantic Tailwind mappings
+  <section className="space-y-4">
+    <div className="flex items-center gap-3">
+      <Badge variant="secondary">Roles</Badge>
+      <h2 className="text-2xl font-semibold tracking-tight">
+        The token meanings that should stay stable
+      </h2>
+    </div>
+    <div className="kx-docs-grid">
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-xl">Surface hierarchy</CardTitle>
+          <CardDescription>
+            Use <code>background</code> for the page, <code>card</code> for contained surfaces, and <code>popover</code> for floating layers.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-xl">Action hierarchy</CardTitle>
+          <CardDescription>
+            Keep <code>primary</code> as the strongest interaction color and <code>accent</code> as supportive emphasis.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle className="text-xl">Supporting tokens</CardTitle>
+          <CardDescription>
+            <code>muted</code>, <code>border</code>, <code>input</code>, and <code>ring</code> do most of the quiet structural work.
+          </CardDescription>
+        </CardHeader>
+      </Card>
+    </div>
+  </section>
 
-Use both together:
+  <section className="space-y-4">
+    <div className="flex items-center gap-3">
+      <Badge variant="secondary">Override</Badge>
+      <h2 className="text-2xl font-semibold tracking-tight">
+        Rebrand the library by swapping token values
+      </h2>
+    </div>
+    <Card>
+      <CardContent className="grid gap-6 p-6 lg:grid-cols-[1.1fr_0.9fr]">
+        <DocsCodeBlock
+          code={`@import "@kenshinx/ui/styles.css";
 
-```ts
-import "@kenshinx/ui/styles.css";
-import kenshinPreset from "@kenshinx/ui/tailwind-preset";
-```
-
-## Default Theme Shape
-
-```css
 :root {
-  --background: 0 0% 100%;
-  --foreground: 240 10% 3.9%;
-  --primary: 240 5.9% 10%;
-  --primary-foreground: 0 0% 98%;
-  --radius: 0.5rem;
-}
+  --background: 44 33% 98%;
+  --foreground: 24 10% 16%;
+  --primary: 18 89% 58%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 34 100% 95%;
+  --secondary-foreground: 24 10% 16%;
+  --accent: 48 100% 90%;
+  --accent-foreground: 24 10% 16%;
+  --border: 32 55% 88%;
+  --input: 32 55% 88%;
+  --ring: 18 89% 58%;
+  --radius: 1rem;
+}`}
+        />
 
-.dark {
-  --background: 240 10% 3.9%;
-  --foreground: 0 0% 98%;
-  --primary: 0 0% 98%;
-  --primary-foreground: 240 5.9% 10%;
-}
-```
+        <div className="space-y-4">
+          <div className="rounded-3xl border border-border bg-background p-5">
+            <p className="text-sm font-semibold">Safe customization path</p>
+            <p className="mt-2 text-sm leading-6 text-muted-foreground">
+              Keep the semantic roles and replace the values underneath them.
+              That preserves the library API and the styling contract at the same time.
+            </p>
+          </div>
+          <div className="kx-docs-note">
+            The full maintainer source of truth lives in
+            <code> docs/maintainers/design-system.md </code>
+            and should be updated whenever the shipped default theme changes.
+          </div>
+        </div>
+      </CardContent>
+    </Card>
+  </section>
 
-## Override Tokens
+  <section className="kx-docs-grid-2">
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-xl">What to do</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-3 text-sm text-muted-foreground">
+        <p>Use semantic classes like <code>bg-card</code>, <code>text-foreground</code>, and <code>border-input</code>.</p>
+        <p>Test button, input, dialog, and card stories first after any palette change.</p>
+        <p>Let radius changes flow from <code>--radius</code> instead of introducing ad hoc corner values.</p>
+      </CardContent>
+    </Card>
 
-```css
-@import "@kenshinx/ui/styles.css";
-
-:root {
-  --primary: 221 83% 53%;
-  --primary-foreground: 210 40% 98%;
-  --accent: 199 89% 48%;
-  --accent-foreground: 210 40% 98%;
-  --radius: 0.75rem;
-}
-
-.dark {
-  --primary: 217 91% 60%;
-  --primary-foreground: 222 47% 11%;
-}
-```
-
-## Core Tokens
-
-### Colors
-
-| Token | Purpose |
-|-------|---------|
-| `--background` | App background |
-| `--foreground` | Default text color |
-| `--primary` | Primary actions and emphasis |
-| `--primary-foreground` | Text on primary surfaces |
-| `--secondary` | Secondary surfaces |
-| `--secondary-foreground` | Text on secondary surfaces |
-| `--muted` | Subtle backgrounds |
-| `--muted-foreground` | Secondary text |
-| `--accent` | Highlight color |
-| `--accent-foreground` | Text on accent surfaces |
-| `--destructive` | Error and destructive actions |
-| `--destructive-foreground` | Text on destructive surfaces |
-| `--border` | Default borders |
-| `--input` | Input borders |
-| `--ring` | Focus rings |
-
-### Other Tokens
-
-| Token | Purpose |
-|-------|---------|
-| `--radius` | Base border radius |
-| `--chart-1` to `--chart-5` | Chart color scale |
-
-## Radius Mapping
-
-The preset derives radius utilities from `--radius`:
-
-- `rounded-lg` -> `var(--radius)`
-- `rounded-md` -> `calc(var(--radius) - 2px)`
-- `rounded-sm` -> `calc(var(--radius) - 4px)`
-
-## Dark Mode
-
-Dark mode is class-based. Toggle the `dark` class on the root element used by your app.
-
-```ts
-document.documentElement.classList.toggle("dark");
-```
-
-## Brand Example
-
-```css
-:root {
-  --background: 30 20% 98%;
-  --foreground: 20 14% 4%;
-  --primary: 221 83% 53%;
-  --primary-foreground: 210 40% 98%;
-  --muted: 30 20% 96%;
-  --muted-foreground: 20 10% 40%;
-  --radius: 0.75rem;
-}
-
-.dark {
-  --background: 222 47% 11%;
-  --foreground: 210 40% 98%;
-  --primary: 217 91% 60%;
-  --primary-foreground: 222 47% 11%;
-}
-```
+    <Card>
+      <CardHeader>
+        <CardTitle className="text-xl">What to avoid</CardTitle>
+      </CardHeader>
+      <CardContent className="space-y-3 text-sm text-muted-foreground">
+        <p>Do not hardcode Tailwind palette colors like <code>slate-200</code> into core components.</p>
+        <p>Do not turn <code>accent</code> into a second primary; it should stay supportive.</p>
+        <p>Do not patch component internals when a token override will solve the problem.</p>
+      </CardContent>
+    </Card>
+  </section>
+</div>
