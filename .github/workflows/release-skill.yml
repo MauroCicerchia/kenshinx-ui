@@ -5,7 +5,9 @@ on:
   push:
     branches: ["main"]
     paths:
-      - ".agents/skills/kenshinx-ui/**"
+      - "skills/kenshinx-ui/**"
+      - "scripts/skills/**"
+      - ".github/workflows/release-skill.yml"
 
 permissions:
   contents: write
@@ -29,12 +31,12 @@ jobs:
 
       - name: Validate skill
         run: |
-          python3 .agent/skills/skill-creator/scripts/quick_validate.py .agents/skills/kenshinx-ui
+          python3 scripts/skills/quick_validate.py skills/kenshinx-ui
           echo "Skill validation passed!"
 
       - name: Package skill
         run: |
-          python3 .agent/skills/skill-creator/scripts/package_skill.py .agents/skills/kenshinx-ui ./dist
+          python3 scripts/skills/package_skill.py skills/kenshinx-ui ./dist
           echo "Skill packaged to ./dist/kenshinx-ui.skill"
 
       - name: Get skill version
